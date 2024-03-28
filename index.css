@@ -1,4 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+
 html, body {
     margin: 0;
     padding: 0;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+body{
+    background-color: #000000;
+    color: white;
+}
+
+.container,
+form
+.listContainer,
+.logoContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    width: 100%;
+}
+
+/* LOGO */
+.logoContainer{
+    align-items: center;
+    margin-top: 1.5em;
+}
+.logoContainer img{
+    width: 5.62rem;
+}
+
+.logoContainer h1{
+ font-size: 1.56rem;
+}
+
+
+.endorsementContainer{
+    display: grid;
 }
