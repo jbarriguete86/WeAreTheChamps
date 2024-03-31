@@ -11,19 +11,25 @@ html, body {
 body{
     background-color: #000000;
     color: white;
+    width: 100dvw;
+    height: 100dvh;;
 }
 
 .container,
-form
-.listContainer,
-.logoContainer{
+form,
+.formInnerCont,
+.logoContainer,
+.endorsementContainer{
     display: flex;
     flex-direction: column;
 }
 
 .container{
     width: 100%;
+    align-items: center;
 }
+
+
 
 /* LOGO */
 .logoContainer{
@@ -38,7 +44,104 @@ form
  font-size: 1.56rem;
 }
 
-
-.endorsementContainer{
-    display: grid;
+/* FORM */
+input,
+textarea,
+button{
+    font-family: "Josefin Sans", sans-serif;
+    border-radius: 8px;
 }
+
+form{
+    width: 80%;
+    margin: auto;
+}
+
+input,
+textarea{
+    height: 118px;
+    background-color: #444059;
+    color:#8F8F8F;
+    font-size: 1rem;
+    
+}
+
+textarea{
+    padding: 12px 19px;
+}
+
+.formInnerCont{
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+input{
+    display:inline;
+    width: 49%;
+    height: 40px;
+    text-align: center;
+}
+
+.formInnerCont,
+button{
+    margin-top: 1em;
+}
+
+button{
+    background-color: #28A9F1;
+    color:#04131C;
+    font-weight: bold; 
+    padding: 1.4em 0;
+    text-align: center;
+}
+
+
+
+/* ENDORSEMENTS */
+
+h2{
+    margin-top: 1.2em;
+}
+
+.endorsementContainer > div{
+    display: grid;
+    margin: 1em 2.25em;
+    padding: 1em .85em;
+    font-size: .875rem;
+    background-color: #FFFFFF;
+    color: #1B1924;
+    grid-template: repeat(3, auto)/ repeat(3, auto);
+    grid-template-areas:
+    "to . ."
+    "endorse endorse endorse"
+    "from . like"
+}
+
+.toText,
+.fromText{
+    font-weight: bolder;
+}
+
+p{
+    margin:0
+}
+
+.toText{
+    grid-area: to;
+}
+
+.endorsement{
+ grid-area: endorse;
+ font-weight: light;
+ margin: 1em 0;
+}
+
+.fromText{
+    grid-area: from;
+}
+
+.likeIcon{
+    grid-area: like;
+    font-size: 1.2rem;
+}
+

@@ -13,20 +13,36 @@
 <body>
     <div class="container">
         <div class="logoContainer">
-            <img src="./assets/freddie.png" alt="an image of Freddie Mercury famous position while singing"/>
+            <img src="./assets/freddie.png" alt="an image of Freddie Mercury in his iconic singing pose"/>
             <h1>We are the Champions</h1>
         </div>
         <form> 
-            <input type="text" placeholder="Write your endorsement here">
+            <textarea placeholder="Write your endorsement here"></textarea>
+            <div class="formInnerCont">
+                <input type="text" placeholder="from:"/>
+                <input type="text" placeholder="to:"/>
+            </div>
             <button>Publish</button>
         </form>
-        <div class="listContainer">
-            <h2>-Endorsements-</h2>
-            <div class="endorsementContainer">
-                <p>Hi Bob! Your React Router course is so good. The students are going to LOVE IT. I’m so excited for the launch :) 🔥 Per</p>
-                <p>from: Jose</p>
-                <p>to: Bob</p>
-                <i class="fa-regular fa-heart"></i>
+        <h2>-Endorsements-</h2>
+        <div class="endorsementContainer">
+            <div>
+                <p class="toText">to: Bob</p>
+                <p class="endorsement">Hi Bob! Your React Router course is so good. The students are going to LOVE IT. I’m so excited for the launch :) 🔥 Per</p>
+                <p class="fromText">from: Jose</p>
+                <p class="likeIcon">
+                    <span><i class="fa-regular fa-heart"></i></span>
+                    4
+                </p>
+            </div>
+            <div>
+                <p class="toText">to: Juan</p>
+                <p class="endorsement">Hi Juan thanks for your course, it's amazing</p>
+                <p class="fromText">from: Jose</p>
+                <p class="likeIcon">
+                    <span><i class="fa-solid fa-heart"></i></span>
+                    7
+                </p>
             </div>
         </div>
     </div>
