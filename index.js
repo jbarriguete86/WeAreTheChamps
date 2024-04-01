@@ -1,10 +1,7 @@
 import {endorsementInDB as endorsementsDB } from "./data.js";
 import { getList } from "./list.js";
-import {push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import {push, onValue, update} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
-const appSettings = {
-    databaseURL: "https://realtime-database-a75cc-default-rtdb.firebaseio.com/"
-}
 
 document.addEventListener('DOMContentLoaded', ()=>{
     console.log(endorsementsDB)
@@ -20,35 +17,59 @@ document.addEventListener('DOMContentLoaded', ()=>{
             let fromValue = fromInput.value
             let toValue= toInput.value
 
-            const newEndorsements= {
-                review:reviewValue,
-                to:toValue,
-                from:fromValue,
-                likes:0,
-                isLiked:false
+            if(reviewValue && fromValue && toValue ){
+                const newEndorsements= {
+                    review:reviewValue,
+                    to:toValue,
+                    from:fromValue,
+                    likes:0,
+                    isLiked:false
+                }
+                
+                push(endorsementsDB, newEndorsements)
+                
+                clearInputFieldsEl()
+            } else {
+                alert("You need to fill in the information first")
             }
-            
-            push(endorsementsDB, newEndorsements)
-            
-            clearInputFieldsEl()
+
         })
 
     onValue(endorsementsDB, function(snapshot) {
         if (snapshot.exists()) {
             let itemsArray = Object.entries(snapshot.val())
+
+            itemsArray.reverse()
             clearEndorsement()
         
             let list= getList(itemsArray)
 
             renderList(list)
+
+            document.addEventListener("click", (e) => {
+                if (e.target.id) {
+                    const element = itemsArray.find(item => item[0] === e.target.id)
+                    if (element) {
+                        const [key, value] = element
+                        if (!value.isLiked) {
+                            value.likes++
+                        } else {
+                            value.likes--
+                        }
+                        value.isLiked = !value.isLiked
+                        update(endorsementsDB, { [key]: value })
+                    }
+                }
+            })
             
             } else {
             endorsements.innerHTML = "<p>No endorsements here... yet</p>"
         }
+
+        
     })
 
 
-    
     function  renderList(info){
         endorsements.innerHTML = info.join('')
 
@@ -63,5 +84,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         fromInput.value=""
         toInput.value=""
     }
+
 
 })
