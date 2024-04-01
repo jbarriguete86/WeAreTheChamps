@@ -110,7 +110,7 @@ h2{
     font-size: .875rem;
     background-color: #FFFFFF;
     color: #1B1924;
-    grid-template: repeat(3, auto)/ repeat(3, auto);
+    grid-template: repeat(3, auto)/ repeat(3, 1fr);
     grid-template-areas:
     "to . ."
     "endorse endorse endorse"
@@ -143,5 +143,6 @@ p{
 .likeIcon{
     grid-area: like;
     font-size: 1.2rem;
+    margin-left: auto;
 }
 
